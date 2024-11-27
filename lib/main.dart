@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Pavlova aux fraises',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -28,10 +28,10 @@ class MyApp extends StatelessWidget {
         //
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 0, 195, 255)),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Pavlova aux fraises'),
     );
   }
 }
@@ -56,6 +56,34 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  String _text = 'Pavlova aux fraises';
+
+  final stars = Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children:[
+      Icon(Icons.star, color: Colors.green[500]),
+      Icon(Icons.star, color: Colors.green[500]),
+      Icon(Icons.star, color: Colors.green[500]),
+      const Icon(Icons.star, color: Colors.black),
+      const Icon(Icons.star, color: Colors.black),
+    ],
+  );
+
+    static const descTextStyle = TextStyle(
+      color: Colors.black,
+      fontWeight: FontWeight.w800,
+      fontFamily: 'Roboto',
+      letterSpacing: 0.5,
+      fontSize: 18,
+      height: 2,
+    );
+
+    final iconList = DefaultTextStyle.merge(
+      style: descTextStyle,
+      child: Container(
+        padding: const EdgeInsets.all(20),
+      ),
+    );
 
   void _incrementCounter() {
     setState(() {
@@ -89,7 +117,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
-        child: Column(
+        child: Row(
           // Column is also a layout widget. It takes a list of children and
           // arranges them vertically. By default, it sizes itself to fit its
           // children horizontally, and tries to be as tall as its parent.
@@ -103,23 +131,53 @@ class _MyHomePageState extends State<MyHomePage> {
           // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
           // action in the IDE, or press "p" in the console), to see the
           // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
-  }
-}
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget> [
+              stars,
+              const Text(
+                '170 Reviews',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.w800,
+                  fontFamily: 'Roboto',
+                  letterSpacing: 0.5,
+                  fontSize: 20,
+                ),
+              ),
+              Image.asset('Assets/Images/pavlova-fraises.png'),
+                  iconList,
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.kitchen, color: Colors.green[500]),
+                        const Text('PREP:'),
+                        const Text('25 min'),
+                      ],
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.timer, color: Colors.green[500]),
+                        const Text('COOK:'),
+                        const Text('1 hr'),
+                      ],
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.restaurant, color: Colors.green[500]),
+                        const Text('FEEDS:'),
+                        const Text('4-6'),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              floatingActionButton: FloatingActionButton(
+              onPressed: _incrementCounter,
+              tooltip: 'Increment',
+              child: const Icon(Icons.add),
+            ), // This trailing comma makes auto-formatting nicer for build methods.
+          );
+        }
+      }

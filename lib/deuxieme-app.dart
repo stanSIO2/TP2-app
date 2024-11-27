@@ -150,7 +150,7 @@ class _MyHomePageState extends State<MyHomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text(_text),
-                Image.asset('Assets/Images/test-image.jpeg')
+                Image.asset('Assets/Images/test-image.jpeg'),
               ],
             ),
           ),
