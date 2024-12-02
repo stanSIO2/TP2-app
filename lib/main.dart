@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(const MyApp());
@@ -55,7 +56,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  //int _counter = 0;
   String _text = 'Pavlova aux fraises';
 
   final stars = Row(
@@ -78,14 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
       height: 2,
     );
 
-    final iconList = DefaultTextStyle.merge(
-      style: descTextStyle,
-      child: Container(
-        padding: const EdgeInsets.all(20),
-      ),
-    );
-
-  void _incrementCounter() {
+  /*void _incrementCounter() {
     setState(() {
       // This call to setState tells the Flutter framework that something has
       // changed in this State, which causes it to rerun the build method below
@@ -94,7 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
       // called again, and so nothing would appear to happen.
       _counter++;
     });
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -133,51 +127,73 @@ class _MyHomePageState extends State<MyHomePage> {
           // wireframe for each widget.
             mainAxisSize: MainAxisSize.min,
             children: <Widget> [
-              stars,
-              const Text(
-                '170 Reviews',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.w800,
-                  fontFamily: 'Roboto',
-                  letterSpacing: 0.5,
-                  fontSize: 20,
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Container(
+                        height: 100,
+                        width: 400,
+                        child: Text('La Pavlova est un dessert à base de meringue qui doit son nom à la ballerine russe Anna Pavlova. La Pavlova se caractérise par une croûte croustillante et un intérieur moelleux et léger, garni de fruits et de crème fouettée'),
+                        color: Color.fromARGB(255, 0, 217, 255),
+                      ),
+                      Row(
+                        children: [
+                          stars,
+                          Container(
+                            width: 100,
+                            height: 150,
+                          ),
+                          Text('170 Reviews',
+                          style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.w800,
+                          fontFamily: 'Roboto',
+                          letterSpacing: 0.5,
+                          fontSize: 20,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(Icons.kitchen, color: Colors.green[500]),
+                              const Text('PREP:'),
+                              const Text('25 min'),
+                            ],
+                          ),
+                          Container(
+                            width: 70,
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(Icons.timer, color: Colors.green[500]),
+                              const Text('COOK:'),
+                              const Text('1 hr'),
+                            ],
+                          ),
+                          Container(
+                            width: 70,
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(Icons.restaurant, color: Colors.green[500]),
+                              const Text('FEEDS:'),
+                              const Text('4-6'),
+                            ],
+                          ),
+                        ],
+                      ),
+                  ]
                 ),
-              ),
-              Image.asset('Assets/Images/pavlova-fraises.png'),
-                  iconList,
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.kitchen, color: Colors.green[500]),
-                        const Text('PREP:'),
-                        const Text('25 min'),
-                      ],
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.timer, color: Colors.green[500]),
-                        const Text('COOK:'),
-                        const Text('1 hr'),
-                      ],
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.restaurant, color: Colors.green[500]),
-                        const Text('FEEDS:'),
-                        const Text('4-6'),
-                      ],
-                    ),
-                  ],
+                  Image.asset('Assets/Images/pavlova-fraises.png'),
+                ]
+              )
                 ),
-              ),
-              floatingActionButton: FloatingActionButton(
-              onPressed: _incrementCounter,
-              tooltip: 'Increment',
-              child: const Icon(Icons.add),
-            ), // This trailing comma makes auto-formatting nicer for build methods.
           );
         }
       }
