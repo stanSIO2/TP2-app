@@ -158,7 +158,7 @@ class _MySecondPageState extends State<MySecondPage> {
             FloatingActionButton(onPressed: (){
                 Navigator.pop(context);
                 },
-                child: const Text("Precédent"),)
+                child: const Text("Retour"),)
           ],
         ),
       ),
