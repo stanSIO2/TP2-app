@@ -81,7 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           floatingActionButton: FloatingActionButton(
             onPressed: _likeThis,
-            tooltip: 'Increment',
+            tooltip: 'Actualiser',
             child: const Icon(Icons.restart_alt),
             backgroundColor: Colors.red,
         ),
